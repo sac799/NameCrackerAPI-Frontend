@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-8">
+        <div class="card shadow">
+          <h5 class="card-header text-center">Name Parser</h5>
+          <div class="card-body">
+            <form (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+              <div class="mb-3">
+                <label for="fullName" class="form-label">Full Name</label>
+                <input
+                  type="text"
+                  id="fullName"
+                  class="form-control"
+                  [(ngModel)]="fullName"
+                  name="fullName"
+                  placeholder="Enter full name"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Please enter a valid full name.
+                </div>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Parse Name</button>
+              </div>
+            </form>
+  
+            <div *ngIf="parsedName" class="mt-4">
+              <h5 class="text-center">Parsed Name</h5>
+              <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <strong>Title:</strong> <span>{{ parsedName.title || 'N/A' }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <strong>First Name:</strong> <span>{{ parsedName.forename || 'N/A' }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <strong>Middle Name:</strong> <span>{{ parsedName.middleName || 'N/A' }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <strong>Last Name:</strong> <span>{{ parsedName.surname || 'N/A' }}</span>
+                </li>
+              </ul>
+            </div>
+  
+            <div *ngIf="error" class="mt-4 alert alert-danger">
+              {{ error }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
